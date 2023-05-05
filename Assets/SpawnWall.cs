@@ -26,5 +26,6 @@ public class SpawnWall : MonoBehaviour
             Destroy(gameObject);
         }
         rb.velocity = Vector2.left * (speed + gm.speedMultiplier);
+        
     }
 }

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             timer = 0;
             int randNum = Random.Range(0, 2);
-            Instantiate(Wall, Spawn[randNum].transform.position, Quaternion.identity);
+            Instantiate(Wall, Spawn[randNum].transform.position, Quaternion.identity).GetComponent<Renderer>().sortingOrder = 100;
         }
     }
 }
