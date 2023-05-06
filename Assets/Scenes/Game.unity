@@ -842,7 +842,7 @@ MonoBehaviour:
   - {fileID: 609139260}
   - {fileID: 1909355125}
   timer: 0
-  timeBetweenSpawns: 2
+  timeBetweenSpawns: 1.5
   speedMultiplier: 0
   distanceUI: {fileID: 964822681}
 --- !u!4 &503794272
