@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
@@ -9,7 +11,7 @@ public class ParallaxBackground : MonoBehaviour
     private void Update()
     {
         // przesuwamy t³o z prawej do lewej
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        transform.Translate(Vector3.left * Time.deltaTime * speed);
 
         // jeœli t³o osi¹gnê³o pozycjê koñcow¹, przenosimy je na pocz¹tek
         if (transform.position.x <= endPosition)

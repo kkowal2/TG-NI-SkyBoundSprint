@@ -28,4 +28,6 @@ public class SpawnWall : MonoBehaviour
         rb.velocity = Vector2.left * (speed + gm.speedMultiplier);
         
     }
+
+
 }

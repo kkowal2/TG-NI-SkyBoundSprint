@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject Wall;
+    public GameObject Bonus;
     public GameObject[] Spawn;
     public float timer;
+    public float timerBonus;
     public float timeBetweenSpawns;
+    public float timeBetweenBonusSpawns;
 
 
     public float speedMultiplier;
@@ -35,6 +38,15 @@ public class GameManager : MonoBehaviour
             timer = 0;
             int randNum = Random.Range(0, 2);
             Instantiate(Wall, Spawn[randNum].transform.position, Quaternion.identity).GetComponent<Renderer>().sortingOrder = 100;
+        }
+
+        timerBonus += Time.deltaTime;
+        if(timerBonus > timeBetweenBonusSpawns)
+        {
+            timerBonus = 0;
+            int randNum = Random.Range(0, 2);
+            Instantiate(Bonus, Spawn[0].transform.position, Quaternion.identity).GetComponent<Renderer>().sortingOrder = 101;
+
         }
     }
 }

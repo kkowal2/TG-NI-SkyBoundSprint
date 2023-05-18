@@ -838,11 +838,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wall: {fileID: 7525051353722067832, guid: 5e4e5eb43ab803049ac402a454c6f945, type: 3}
+  Bonus: {fileID: 6258271791646157661, guid: fe586651ac2b8ab4f9a14d07e69d8ef6, type: 3}
   Spawn:
   - {fileID: 609139260}
   - {fileID: 1909355125}
   timer: 0
+  timerBonus: 0
   timeBetweenSpawns: 1.5
+  timeBetweenBonusSpawns: 5
   speedMultiplier: 0
   distanceUI: {fileID: 964822681}
 --- !u!4 &503794272
@@ -1315,7 +1318,7 @@ GameObject:
   - component: {fileID: 1009229066}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     public float jump;
     private Rigidbody2D rb;
     private bool isGrounded;
+    public Text bonusUI;
 
     private void Awake()
     {
@@ -16,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        bonusUI.enabled = false;
     }
 
     // Update is called once per frame
@@ -49,5 +51,19 @@ public class PlayerMove : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+
+        if (other.gameObject.CompareTag("Bonus"))
+        {
+            Debug.Log("BONUS!");
+            //bonusUI.enabled = true;
+            StartCoroutine(ShowBonus());
+        }
+    }
+
+    private IEnumerator ShowBonus()
+    {
+        bonusUI.enabled = true;
+        yield return new WaitForSeconds(2f);
+        bonusUI.enabled = false;
     }
 }
