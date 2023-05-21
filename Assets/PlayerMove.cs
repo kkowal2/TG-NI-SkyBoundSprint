@@ -14,11 +14,13 @@ public class PlayerMove : MonoBehaviour
     public TextMeshProUGUI bonusTypeUI;
     public bool isBonusActive = false;
     private SpriteRenderer sr;
+    private Animator an;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        an = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector2.up * jump);
+            an.enabled = false;
         }
     }
 
@@ -40,6 +43,7 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            an.enabled = true;
         }
     }
     private void OnCollisionExit2D(Collision2D other)
