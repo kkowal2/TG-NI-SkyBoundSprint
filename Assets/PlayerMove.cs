@@ -13,10 +13,12 @@ public class PlayerMove : MonoBehaviour
     public TextMeshProUGUI bonusUI;
     public TextMeshProUGUI bonusTypeUI;
     public bool isBonusActive = false;
+    private SpriteRenderer sr;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
@@ -52,7 +54,14 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(0);
+            if(isBonusActive == true)
+            {
+
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 
         if (other.gameObject.CompareTag("Bonus"))
@@ -73,11 +82,14 @@ public class PlayerMove : MonoBehaviour
 
     private IEnumerator ShowBonusType()
     {
+        sr.color = new Color(1f, 1f, 1f, 0.5f);
         isBonusActive = true;
         bonusTypeUI.text = "Nieœmiertelnoœæ";
         bonusTypeUI.enabled = true;
         yield return new WaitForSeconds(5f);
         bonusTypeUI.enabled = false;
         isBonusActive = false;
+        sr.color = Color.white;
+
     }
 }
