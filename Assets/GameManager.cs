@@ -17,10 +17,13 @@ public class GameManager : MonoBehaviour
     public float speedMultiplier;
     private float distance;
     public Text distanceUI;
+
+    public GameObject _PlayerMove;
+    private PlayerMove playerMove;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerMove = _PlayerMove.GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -41,7 +44,8 @@ public class GameManager : MonoBehaviour
         }
 
         timerBonus += Time.deltaTime;
-        if(timerBonus > timeBetweenBonusSpawns)
+        
+        if(timerBonus > timeBetweenBonusSpawns && playerMove.isBonusActive == false)
         {
             timerBonus = 0;
             int randNum = Random.Range(0, 2);

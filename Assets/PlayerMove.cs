@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
     public float jump;
     private Rigidbody2D rb;
     private bool isGrounded;
-    public Text bonusUI;
+    public TextMeshProUGUI bonusUI;
+    public TextMeshProUGUI bonusTypeUI;
+    public bool isBonusActive = false;
 
     private void Awake()
     {
@@ -55,8 +58,9 @@ public class PlayerMove : MonoBehaviour
         if (other.gameObject.CompareTag("Bonus"))
         {
             Debug.Log("BONUS!");
-            //bonusUI.enabled = true;
+            //bonusUI.enabled = true;           
             StartCoroutine(ShowBonus());
+            StartCoroutine(ShowBonusType());
         }
     }
 
@@ -65,5 +69,15 @@ public class PlayerMove : MonoBehaviour
         bonusUI.enabled = true;
         yield return new WaitForSeconds(2f);
         bonusUI.enabled = false;
+    }
+
+    private IEnumerator ShowBonusType()
+    {
+        isBonusActive = true;
+        bonusTypeUI.text = "Nieœmiertelnoœæ";
+        bonusTypeUI.enabled = true;
+        yield return new WaitForSeconds(5f);
+        bonusTypeUI.enabled = false;
+        isBonusActive = false;
     }
 }
