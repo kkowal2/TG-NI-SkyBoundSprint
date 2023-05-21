@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Wall;
+    public GameObject UpWall;
+    public GameObject DownWall;
     public GameObject Bonus;
     public GameObject[] Spawn;
     public float timer;
@@ -40,7 +41,14 @@ public class GameManager : MonoBehaviour
         {
             timer = 0;
             int randNum = Random.Range(0, 2);
-            Instantiate(Wall, Spawn[randNum].transform.position, Quaternion.identity).GetComponent<Renderer>().sortingOrder = 100;
+            if(randNum == 0)
+            {
+                Instantiate(DownWall, Spawn[randNum].transform.position, Quaternion.identity).GetComponent<Renderer>().sortingOrder = 100;
+            }
+            else
+            {
+                Instantiate(UpWall, Spawn[randNum].transform.position, Quaternion.identity).GetComponent<Renderer>().sortingOrder = 100;
+            }
         }
 
         timerBonus += Time.deltaTime;
