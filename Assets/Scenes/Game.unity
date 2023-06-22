@@ -999,7 +999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpWall: {fileID: 7525051353722067832, guid: d5e3f0315a2dbe74d961990f79005410, type: 3}
   DownWall: {fileID: 1068010750685704, guid: f72335d0f97cbdd4abec38471223522a, type: 3}
-  Bonus: {fileID: 8110246847048429294, guid: bcbcbff0d2767b54e9f4ef4e3af64e4f, type: 3}
+  Bonus: {fileID: 6258271791646157661, guid: 7a93d1db438932d45bac9a3eb30a05ae, type: 3}
   Spawn:
   - {fileID: 609139260}
   - {fileID: 1909355125}
