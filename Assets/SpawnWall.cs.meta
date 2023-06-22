@@ -3,7 +3,8 @@ guid: fbe7e7c334eed7048bd35f575995b519
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animationClip: {fileID: 7400000, guid: 06df70a85d4b8e04390f87a021bba29b, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
