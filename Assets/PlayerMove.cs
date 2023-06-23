@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
     {
         sr.color = new Color(1f, 1f, 1f, 0.5f);
         isBonusActive = true;
-        bonusTypeUI.text = "Nieśmiertelność";
+        bonusTypeUI.text = "Immortality";
         bonusTypeUI.enabled = true;
         yield return new WaitForSeconds(5f);
         bonusTypeUI.enabled = false;
