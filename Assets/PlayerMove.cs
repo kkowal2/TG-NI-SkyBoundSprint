@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,8 +15,9 @@ public class PlayerMove : MonoBehaviour
     public bool isBonusActive = false;
     private SpriteRenderer sr;
     private Animator an;
+	public AudioSource source;
 
-    private void Awake()
+	private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -26,10 +27,12 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         bonusUI.enabled = false;
-    }
+		source = GameObject.Find("EatAudioSource").GetComponent<AudioSource>();
 
-    // Update is called once per frame
-    void Update()
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -74,8 +77,10 @@ public class PlayerMove : MonoBehaviour
             //bonusUI.enabled = true;           
             StartCoroutine(ShowBonus());
             StartCoroutine(ShowBonusType());
-        }
-    }
+			source.Play();
+
+		}
+	}
 
     private IEnumerator ShowBonus()
     {
@@ -88,7 +93,7 @@ public class PlayerMove : MonoBehaviour
     {
         sr.color = new Color(1f, 1f, 1f, 0.5f);
         isBonusActive = true;
-        bonusTypeUI.text = "Nieœmiertelnoœæ";
+        bonusTypeUI.text = "NieÅ›miertelnoÅ›Ä‡";
         bonusTypeUI.enabled = true;
         yield return new WaitForSeconds(5f);
         bonusTypeUI.enabled = false;
