@@ -15,7 +15,8 @@ public class PlayerMove : MonoBehaviour
     public bool isBonusActive = false;
     private SpriteRenderer sr;
     private Animator an;
-	public AudioSource source;
+	public AudioSource eatSource;
+	public AudioSource hitSource;
 
 	private void Awake()
     {
@@ -27,7 +28,8 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         bonusUI.enabled = false;
-		source = GameObject.Find("EatAudioSource").GetComponent<AudioSource>();
+		eatSource = GameObject.Find("EatAudioSource").GetComponent<AudioSource>();
+		hitSource = GameObject.Find("HitAudioSource").GetComponent<AudioSource>();
 
 	}
 
@@ -67,8 +69,9 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(0);
-            }
+				hitSource.Play();
+				StartCoroutine(LoadSceneAfterDelay(0.2f));
+			}
         }
 
         if (other.gameObject.CompareTag("Bonus"))
@@ -77,12 +80,18 @@ public class PlayerMove : MonoBehaviour
             //bonusUI.enabled = true;           
             StartCoroutine(ShowBonus());
             StartCoroutine(ShowBonusType());
-			source.Play();
+			eatSource.Play();
 
 		}
 	}
 
-    private IEnumerator ShowBonus()
+	private IEnumerator LoadSceneAfterDelay(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		SceneManager.LoadScene(0);
+	}
+
+	private IEnumerator ShowBonus()
     {
         bonusUI.enabled = true;
         yield return new WaitForSeconds(2f);
